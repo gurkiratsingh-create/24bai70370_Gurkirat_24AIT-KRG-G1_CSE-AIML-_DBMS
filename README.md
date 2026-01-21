@@ -26,32 +26,13 @@ The repository will be **updated continuously** as more experiments are complete
 
 | Experiment No. | Title | Folder |
 |---------------|------|--------|
-| Experiment 1 | Student Data Analysis using Aggregate Functions | `exp-1/` |
-| Experiment 2 | Library Management System using SQL | `exp-2/` |
+| Experiment 1 | Library Management System using SQL  | `exp-1/` |
+| Experiment 2 | Student Data Analysis using Aggregate Functions | `exp-2/` |
 | Experiment 3 | *To be added* | `exp-3/` |
 | Experiment 4 | *To be added* | `exp-4/` |
 
 ---
 
-## 📂 Repository Structure
-
-DBMS-Lab-Experiments/
-│
-│── README.md (Overall repository README)
-│
-│── exp-1/
-│ │── README.md
-│ │── students.sql
-│ │── screenshots/
-│
-│── exp-2/
-│ │── README.md
-│ │── library.sql
-│ │── screenshots/
-│
-
-
----
 
 ## 🛠 Tools & Technologies Used
 
