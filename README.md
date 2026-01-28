@@ -28,7 +28,7 @@ The repository will be **updated continuously** as more experiments are complete
 |---------------|------|--------|
 | Experiment 1 | Library Management System using SQL  | `exp-1/` |
 | Experiment 2 | Student Data Analysis using Aggregate Functions | `exp-2/` |
-| Experiment 3 | *To be added* | `exp-3/` |
+| Experiment 3 | Basic Structure of PL/SQL Block | `exp-3/` |
 | Experiment 4 | *To be added* | `exp-4/` |
 
 ---
