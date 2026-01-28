@@ -45,13 +45,15 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Number 2: ' || num2);
     DBMS_OUTPUT.PUT_LINE('Sum: ' || sum_result);
 END;
-/
 
+/
+```
 ---
 
 ## Screenshot:
 
 ![Implementation](screenshots/Result.png)
+
 
 ---
 
