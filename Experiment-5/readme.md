@@ -278,6 +278,6 @@ FROM employee;
 
 ---
 
-**Author**: SQL Practical Experiment  
+**Author**: Gurkirat Singh Bhangoo 
 **Environment**: Oracle Database
 

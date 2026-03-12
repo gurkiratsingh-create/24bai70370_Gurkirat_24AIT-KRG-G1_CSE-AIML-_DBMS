@@ -30,7 +30,7 @@ The repository will be **updated continuously** as more experiments are complete
 | Experiment 2 | Student Data Analysis using Aggregate Functions | `exp-2/` |
 | Experiment 3 | Basic Structure of PL/SQL Block | `exp-3/` |
 | Experiment 4 | Conditional Control Statements in PL/SQL | `exp-4/` |
-
+| Experiment 5 | Table Management and Conditional Logic | `exp-5/` |
 ---
 
 
