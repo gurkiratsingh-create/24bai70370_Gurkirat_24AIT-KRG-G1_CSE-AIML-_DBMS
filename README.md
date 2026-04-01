@@ -53,7 +53,7 @@ This repository serves as a **comprehensive documentation** of DBMS practical ex
 | 5️⃣ | Table Management and Conditional Logic | CREATE, INSERT, UPDATE, DELETE with Logic | [`exp-5/`](exp-5/) |
 | 6️⃣ | Understanding and Implementing Cursors in PL/SQL | Implicit Cursors, Explicit Cursors, Cursor Attributes | [`exp-6/`](exp-6/) |
 | 7️⃣ | Design and Performance Analysis of Materialized Views | Simple Views, Complex Views, Materialized Views | [`exp-7/`](exp-7/) |
-
+| 8️⃣ | Stored Procedures in PL/SQL using IN, OUT, INOUT | Parameter Modes, Procedures, Exception Handling | [`exp-8/`](exp-8/) |
 > 🔄 **More experiments will be added progressively**
 
 ---
@@ -97,10 +97,15 @@ DBMS-Lab-Experiments/
 │   ├── cursor_experiment.sql
 │   └── screenshots/
 │
-└── exp-7/
-    ├── README.md
-    ├── materialized_views.sql
-    └── screenshots/
+|── exp-7/
+|   ├── README.md
+|   ├── materialized_views.sql
+|   └── screenshots/
+├── exp-8/
+│   ├── README.md
+│   ├── stored_procedure.sql
+│   └── screenshots/
+
 ```
 
 ---
@@ -119,7 +124,7 @@ DBMS-Lab-Experiments/
 - **Constraints** - PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL, CHECK
 - **Aggregate Functions** - COUNT, SUM, AVG, MIN, MAX
 - **Advanced Concepts** - Joins, Subqueries, Views, Cursors, Materialized Views
-
+- **PL/SQL Advanced** - Stored Procedures, Parameter Modes (IN, OUT, INOUT), Exception Handling
 ### 🧰 Development Tools
 - **IDE:** Oracle SQL Developer, pgAdmin
 - **Version Control:** Git & GitHub
@@ -191,7 +196,7 @@ By completing these experiments, the following competencies are achieved:
 
 | Status | Count | Percentage |
 |--------|-------|------------|
-| ✅ Completed | 7 | 100% (of current syllabus) |
+| ✅ Completed | 8 | 100% (of current syllabus) |
 | 🔄 In Progress | 0 | - |
 | 📝 Planned | More to come | - |
 
