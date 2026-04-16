@@ -199,7 +199,7 @@ By completing these experiments, the following competencies are achieved:
 
 | Status | Count | Percentage |
 |--------|-------|------------|
-| ✅ Completed | 8 | 100% (of current syllabus) |
+| ✅ Completed | 9 | 100% (of current syllabus) |
 | 🔄 In Progress | 0 | - |
 | 📝 Planned | More to come | - |
 
@@ -261,5 +261,5 @@ This project is created for **educational purposes** as part of the DBMS Lab cur
 
 ---
 
-**Last Updated:** March 2025  
+**Last Updated:** April 2025  
 **Status:** Active Development 🚀
