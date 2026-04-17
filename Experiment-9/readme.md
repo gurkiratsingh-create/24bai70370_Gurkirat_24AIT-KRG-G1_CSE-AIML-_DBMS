@@ -1,22 +1,22 @@
 # 🧪 EXPERIMENT – 09
 
-## Implementation of Packages in PL/SQL (CRUD Operations)
+## PL/SQL Package Development: Procedures and Shared Cursors
 
 ---
 
 ## 📌 Overview
 
-This experiment demonstrates the implementation of **PL/SQL Packages in Oracle** to perform CRUD (Create, Read, Update, Delete) operations on an `employees` table. The package provides a modular and reusable approach for handling database operations efficiently.
+This experiment demonstrates the creation and implementation of a **PL/SQL package in Oracle** using procedures and a shared cursor. The goal is to achieve **modular, reusable, and efficient database programming**, similar to enterprise-level systems.
 
 ---
 
 ## 🎯 Aim
 
-To design and implement a PL/SQL package that performs CRUD operations on a database table in a structured and reusable manner.
+To design and implement a PL/SQL package that includes procedures and a shared cursor to perform structured database operations.
 
 ---
 
-## 🛠️ Tools Used
+## 🛠️ Tools & Technologies
 
 * Oracle SQL*Plus / SQL Developer
 * PL/SQL
@@ -25,106 +25,94 @@ To design and implement a PL/SQL package that performs CRUD operations on a data
 
 ## 📚 Objectives
 
-* Understand PL/SQL package structure (Specification & Body)
-* Implement modular database logic
-* Perform CRUD operations using stored procedures
-* Use DBMS_OUTPUT for displaying results
-* Handle exceptions in PL/SQL
-* Improve performance and reusability
+* Understand PL/SQL package structure
+* Differentiate between package specification and body
+* Implement shared cursors
+* Perform modular database programming
+* Use procedures for data retrieval
+* Handle exceptions effectively
 
 ---
 
 ## 🧠 Theory
 
-A **PL/SQL package** is a collection of procedures, functions, variables, and cursors grouped together as a single unit.
+A **PL/SQL package** is a collection of related procedures, functions, and cursors grouped together.
 
-It consists of:
+### 🔹 Components:
 
-* **Package Specification** → Declares procedures/functions
+* **Package Specification** → Declares cursor & procedures
 * **Package Body** → Implements logic
 
-### 🔹 Advantages
+### 🔹 Shared Cursor:
 
-* Improves performance (loaded once in memory)
-* Provides modularity
-* Enhances security
-* Promotes code reusability
+* Defined once in package specification
+* Accessible by all procedures
+* Improves performance and reusability
 
 ---
 
 ## ⚙️ Implementation Steps
 
-### Step 1: Create Table
+---
 
-* Created `employees` table with columns:
+### 🔹 Step 1: Create Table
 
-  * emp_id (Primary Key)
-  * emp_name
-  * salary
+* Created `employees` table with emp_id, emp_name, salary
 
 📸 Screenshot:
 ![Step 1](screenshots/1.png)
 
 ---
 
-### Step 2: Create Package Specification
+### 🔹 Step 2: Insert Sample Data
 
-* Declared procedures:
-
-  * add_employee
-  * get_employee
-  * update_salary
-  * delete_employee
+* Inserted multiple employee records
+* Committed changes
 
 📸 Screenshot:
 ![Step 2](screenshots/2.png)
 
 ---
 
-### Step 3: Create Package Body
+### 🔹 Step 3: Insert Additional Records & Commit
 
-* Implemented logic for all CRUD operations
-* Used SQL queries inside procedures
-* Added exception handling
+* Inserted more records
+* Executed COMMIT
 
 📸 Screenshot:
 ![Step 3](screenshots/3.png)
 
 ---
 
-### Step 4: Insert Operation
+### 🔹 Step 4: Package Specification
 
-* Added employee record using package
+* Created package `emp_package`
+* Declared shared cursor
+* Declared procedures
 
 📸 Screenshot:
 ![Step 4](screenshots/4.png)
 
 ---
 
-### Step 5: Read Operation
+### 🔹 Step 5: Package Body
 
-* Retrieved employee details
+* Implemented procedures
+* Used cursor to fetch all records
+* Added exception handling
 
 📸 Screenshot:
 ![Step 5](screenshots/5.png)
 
 ---
 
-### Step 6: Update Operation
+### 🔹 Step 6: Execution of Package
 
-* Updated employee salary
+* Displayed all employees using cursor
+* Retrieved specific employee using procedure
 
 📸 Screenshot:
 ![Step 6](screenshots/6.png)
-
----
-
-### Step 7: Delete Operation
-
-* Deleted employee record
-
-📸 Screenshot:
-![Step 7](screenshots/7.png)
 
 ---
 
@@ -133,46 +121,73 @@ It consists of:
 ### ✅ Input
 
 * SQL commands for table creation
+* INSERT statements for employee records
 * Package specification & body
-* Procedure calls using anonymous PL/SQL blocks
-* Input values:
-
-  * emp_id
-  * emp_name
-  * salary
+* Shared cursor definition
+* PL/SQL procedure calls
+* Input parameter: emp_id
 
 ---
 
 ### ✅ Output
 
-* Employee Added successfully
-* Display of employee name and salary
-* Salary updated successfully
-* Updated values displayed
-* Employee deleted successfully
+* Table successfully created
+* Records inserted successfully
+* Package compiled successfully
+* Display of all employees:
+
+  * ID, Name, Salary
+* Display of specific employee details
 * Proper execution messages from PL/SQL
 
 ---
 
 ## 📊 Result
 
-The PL/SQL package was successfully created and executed. All CRUD operations were performed correctly using modular procedures, demonstrating efficient database programming.
+The PL/SQL package was successfully implemented. The shared cursor efficiently retrieved multiple records, and procedures enabled modular access to employee data.
 
 ---
 
 ## 🎓 Learning Outcome
 
-* Learned structure of PL/SQL packages
-* Understood modular programming in databases
-* Gained hands-on experience with CRUD operations
-* Improved knowledge of exception handling
-* Learned real-world backend database logic
+* Understood package-based modular programming
+* Learned shared cursor usage
+* Implemented reusable database logic
+* Gained experience in PL/SQL procedures
+* Improved understanding of enterprise database design
 
 ---
 
 ## 🚀 Conclusion
 
-This experiment demonstrates how PL/SQL packages improve database performance, maintainability, and reusability. Such implementations are widely used in enterprise-level applications.
+This experiment demonstrates how PL/SQL packages and shared cursors are used in real-world applications to improve performance, maintainability, and scalability of database systems.
+
+---
+
+## 📂 Project Structure
+
+```
+exp-9/
+│── README.md
+│── screenshots/
+│   ├── 1.png
+│   ├── 2.png
+│   ├── 3.png
+│   ├── 4.png
+│   ├── 5.png
+│   └── 6.png
+```
+
+---
+
+## 🔥 Industry Relevance
+
+This approach is widely used in enterprise systems such as:
+
+* Oracle-based applications
+* SAP systems
+* Fintech platforms (PayPal)
+* HR & payroll systems
 
 ---
 

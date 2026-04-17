@@ -1,6 +1,10 @@
+-- EXPERIMENT 09: PL/SQL Package with Procedures and Shared Cursor
+
 SET SERVEROUTPUT ON;
 
--- Drop existing objects (to avoid ORA-00955)
+--------------------------------------------------
+-- Step 1: Drop existing objects (safe execution)
+--------------------------------------------------
 
 BEGIN
     EXECUTE IMMEDIATE 'DROP TABLE employees';
@@ -16,31 +20,78 @@ EXCEPTION
 END;
 /
 
--- Step 1: Create Table
+--------------------------------------------------
+-- Step 2: Create Table
+--------------------------------------------------
+
 CREATE TABLE employees (
     emp_id NUMBER PRIMARY KEY,
     emp_name VARCHAR2(50),
     salary NUMBER
 );
 
--- Step 2: Package Specification
+--------------------------------------------------
+-- Step 3: Insert Sample Data
+--------------------------------------------------
+
+INSERT INTO employees VALUES (1, 'John', 50000);
+INSERT INTO employees VALUES (2, 'Alice', 60000);
+INSERT INTO employees VALUES (3, 'Bob', 55000);
+
+COMMIT;
+
+--------------------------------------------------
+-- Step 4: Package Specification
+--------------------------------------------------
+
 CREATE OR REPLACE PACKAGE emp_package AS
-    PROCEDURE add_employee(p_id NUMBER, p_name VARCHAR2, p_salary NUMBER);
+
+    -- Shared Cursor (visible to all procedures)
+    CURSOR emp_cursor IS
+        SELECT emp_id, emp_name, salary FROM employees;
+
+    -- Procedure to display all employees
+    PROCEDURE display_all_employees;
+
+    -- Procedure to fetch one employee
     PROCEDURE get_employee(p_id NUMBER);
-    PROCEDURE update_salary(p_id NUMBER, p_salary NUMBER);
-    PROCEDURE delete_employee(p_id NUMBER);
+
 END emp_package;
 /
 
--- Step 3: Package Body
+--------------------------------------------------
+-- Step 5: Package Body
+--------------------------------------------------
+
 CREATE OR REPLACE PACKAGE BODY emp_package AS
 
-    PROCEDURE add_employee(p_id NUMBER, p_name VARCHAR2, p_salary NUMBER) IS
+    --------------------------------------------------
+    -- Procedure 1: Display all employees using cursor
+    --------------------------------------------------
+    PROCEDURE display_all_employees IS
+        v_id employees.emp_id%TYPE;
+        v_name employees.emp_name%TYPE;
+        v_salary employees.salary%TYPE;
     BEGIN
-        INSERT INTO employees VALUES (p_id, p_name, p_salary);
-        DBMS_OUTPUT.PUT_LINE('Employee Added');
+        OPEN emp_cursor;
+
+        LOOP
+            FETCH emp_cursor INTO v_id, v_name, v_salary;
+            EXIT WHEN emp_cursor%NOTFOUND;
+
+            DBMS_OUTPUT.PUT_LINE(
+                'ID: ' || v_id || 
+                ', Name: ' || v_name || 
+                ', Salary: ' || v_salary
+            );
+        END LOOP;
+
+        CLOSE emp_cursor;
     END;
 
+    --------------------------------------------------
+    -- Procedure 2: Get specific employee
+    --------------------------------------------------
     PROCEDURE get_employee(p_id NUMBER) IS
         v_name employees.emp_name%TYPE;
         v_salary employees.salary%TYPE;
@@ -58,49 +109,21 @@ CREATE OR REPLACE PACKAGE BODY emp_package AS
             DBMS_OUTPUT.PUT_LINE('Employee Not Found');
     END;
 
-    PROCEDURE update_salary(p_id NUMBER, p_salary NUMBER) IS
-    BEGIN
-        UPDATE employees
-        SET salary = p_salary
-        WHERE emp_id = p_id;
-
-        DBMS_OUTPUT.PUT_LINE('Salary Updated');
-    END;
-
-    PROCEDURE delete_employee(p_id NUMBER) IS
-    BEGIN
-        DELETE FROM employees
-        WHERE emp_id = p_id;
-
-        DBMS_OUTPUT.PUT_LINE('Employee Deleted');
-    END;
-
 END emp_package;
 /
 
--- Step 4: Execution
+--------------------------------------------------
+-- Step 6: Execution
+--------------------------------------------------
 
+-- Display all employees
 BEGIN
-    emp_package.add_employee(1, 'John', 50000);
+    emp_package.display_all_employees;
 END;
 /
 
+-- Get specific employee
 BEGIN
-    emp_package.get_employee(1);
-END;
-/
-
-BEGIN
-    emp_package.update_salary(1, 60000);
-END;
-/
-
-BEGIN
-    emp_package.get_employee(1);
-END;
-/
-
-BEGIN
-    emp_package.delete_employee(1);
+    emp_package.get_employee(2);
 END;
 /
