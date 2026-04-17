@@ -54,7 +54,7 @@ This repository serves as a **comprehensive documentation** of DBMS practical ex
 | 6️⃣ | Understanding and Implementing Cursors in PL/SQL | Implicit Cursors, Explicit Cursors, Cursor Attributes | [`exp-6/`](exp-6/) |
 | 7️⃣ | Design and Performance Analysis of Materialized Views | Simple Views, Complex Views, Materialized Views | [`exp-7/`](exp-7/) |
 | 8️⃣ | Stored Procedures in PL/SQL using IN, OUT, INOUT | Parameter Modes, Procedures, Exception Handling | [`exp-8/`](exp-8/) |
-| 9️⃣ | Triggers in PL/SQL for Salary Calculation | BEFORE INSERT Trigger, :NEW Keyword, Constraint Validation, Exception Handling | [`exp-9/`](exp-9/) |
+| 9️⃣ | Packages in PL/SQL for CRUD Operations | Package Specification & Body, Procedures, Modular Programming, Exception Handling, DBMS_OUTPUT | [`exp-9/`](exp-9/) |
 
 ---
 

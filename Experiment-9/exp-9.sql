@@ -1,98 +1,106 @@
--- Enable output
 SET SERVEROUTPUT ON;
 
---------------------------------------------------
--- 1. DROP TABLE (if already exists)
---------------------------------------------------
+-- Drop existing objects (to avoid ORA-00955)
+
 BEGIN
-    EXECUTE IMMEDIATE 'DROP TABLE employee';
+    EXECUTE IMMEDIATE 'DROP TABLE employees';
 EXCEPTION
-    WHEN OTHERS THEN
-        NULL;
+    WHEN OTHERS THEN NULL;
 END;
 /
 
---------------------------------------------------
--- 2. CREATE TABLE
---------------------------------------------------
-CREATE TABLE employee (
+BEGIN
+    EXECUTE IMMEDIATE 'DROP PACKAGE emp_package';
+EXCEPTION
+    WHEN OTHERS THEN NULL;
+END;
+/
+
+-- Step 1: Create Table
+CREATE TABLE employees (
     emp_id NUMBER PRIMARY KEY,
     emp_name VARCHAR2(50),
-    working_hours NUMBER,
-    perhour_salary NUMBER,
-    total_payable_amount NUMBER
+    salary NUMBER
 );
 
---------------------------------------------------
--- 3. CREATE TRIGGER
---------------------------------------------------
-CREATE OR REPLACE TRIGGER cal_payable_amount
-BEFORE INSERT ON employee
-FOR EACH ROW
-BEGIN
-    -- Calculate total payable amount
-    :NEW.total_payable_amount := :NEW.perhour_salary * :NEW.working_hours;
+-- Step 2: Package Specification
+CREATE OR REPLACE PACKAGE emp_package AS
+    PROCEDURE add_employee(p_id NUMBER, p_name VARCHAR2, p_salary NUMBER);
+    PROCEDURE get_employee(p_id NUMBER);
+    PROCEDURE update_salary(p_id NUMBER, p_salary NUMBER);
+    PROCEDURE delete_employee(p_id NUMBER);
+END emp_package;
+/
 
-    -- Apply constraint
-    IF :NEW.total_payable_amount > 25000 THEN
-        RAISE_APPLICATION_ERROR(-20001, 'AMOUNT IS GREATER THAN 25000');
-    END IF;
+-- Step 3: Package Body
+CREATE OR REPLACE PACKAGE BODY emp_package AS
+
+    PROCEDURE add_employee(p_id NUMBER, p_name VARCHAR2, p_salary NUMBER) IS
+    BEGIN
+        INSERT INTO employees VALUES (p_id, p_name, p_salary);
+        DBMS_OUTPUT.PUT_LINE('Employee Added');
+    END;
+
+    PROCEDURE get_employee(p_id NUMBER) IS
+        v_name employees.emp_name%TYPE;
+        v_salary employees.salary%TYPE;
+    BEGIN
+        SELECT emp_name, salary
+        INTO v_name, v_salary
+        FROM employees
+        WHERE emp_id = p_id;
+
+        DBMS_OUTPUT.PUT_LINE('Name: ' || v_name);
+        DBMS_OUTPUT.PUT_LINE('Salary: ' || v_salary);
+
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            DBMS_OUTPUT.PUT_LINE('Employee Not Found');
+    END;
+
+    PROCEDURE update_salary(p_id NUMBER, p_salary NUMBER) IS
+    BEGIN
+        UPDATE employees
+        SET salary = p_salary
+        WHERE emp_id = p_id;
+
+        DBMS_OUTPUT.PUT_LINE('Salary Updated');
+    END;
+
+    PROCEDURE delete_employee(p_id NUMBER) IS
+    BEGIN
+        DELETE FROM employees
+        WHERE emp_id = p_id;
+
+        DBMS_OUTPUT.PUT_LINE('Employee Deleted');
+    END;
+
+END emp_package;
+/
+
+-- Step 4: Execution
+
+BEGIN
+    emp_package.add_employee(1, 'John', 50000);
 END;
 /
 
---------------------------------------------------
--- 4. INSERT VALID RECORD (LESS THAN 25000)
---------------------------------------------------
 BEGIN
-    INSERT INTO employee(emp_id, emp_name, working_hours, perhour_salary)
-    VALUES (1, 'AKASH', 10, 250);
-
-    DBMS_OUTPUT.PUT_LINE('Record inserted successfully');
+    emp_package.get_employee(1);
 END;
 /
 
---------------------------------------------------
--- 5. DISPLAY TABLE DATA
---------------------------------------------------
 BEGIN
-    FOR rec IN (SELECT * FROM employee) LOOP
-        DBMS_OUTPUT.PUT_LINE(
-            rec.emp_id || ' | ' ||
-            rec.emp_name || ' | ' ||
-            rec.working_hours || ' | ' ||
-            rec.perhour_salary || ' | ' ||
-            rec.total_payable_amount
-        );
-    END LOOP;
+    emp_package.update_salary(1, 60000);
 END;
 /
 
---------------------------------------------------
--- 6. INSERT INVALID RECORD (MORE THAN 25000)
---------------------------------------------------
 BEGIN
-    INSERT INTO employee(emp_id, emp_name, working_hours, perhour_salary)
-    VALUES (2, 'AKASH', 10, 250000);
-
-EXCEPTION
-    WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+    emp_package.get_employee(1);
 END;
 /
 
---------------------------------------------------
--- 7. FINAL TABLE CHECK
---------------------------------------------------
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('Final Table Data:');
-    FOR rec IN (SELECT * FROM employee) LOOP
-        DBMS_OUTPUT.PUT_LINE(
-            rec.emp_id || ' | ' ||
-            rec.emp_name || ' | ' ||
-            rec.working_hours || ' | ' ||
-            rec.perhour_salary || ' | ' ||
-            rec.total_payable_amount
-        );
-    END LOOP;
+    emp_package.delete_employee(1);
 END;
 /

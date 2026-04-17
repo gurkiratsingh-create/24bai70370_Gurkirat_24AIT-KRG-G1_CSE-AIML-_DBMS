@@ -1,127 +1,181 @@
-# 🧪 DBMS Experiment: Trigger for Salary Calculation (Oracle PL/SQL)
+# 🧪 EXPERIMENT – 09
+
+## Implementation of Packages in PL/SQL (CRUD Operations)
 
 ---
 
-## 📌 Title  
-**Automatic Salary Calculation and Validation using Triggers in Oracle**
+## 📌 Overview
+
+This experiment demonstrates the implementation of **PL/SQL Packages in Oracle** to perform CRUD (Create, Read, Update, Delete) operations on an `employees` table. The package provides a modular and reusable approach for handling database operations efficiently.
 
 ---
 
-## 🎯 Aim  
-To design and implement a **trigger in Oracle PL/SQL** that automatically calculates the total payable amount of an employee and enforces a constraint to restrict excessive salary values.
+## 🎯 Aim
+
+To design and implement a PL/SQL package that performs CRUD operations on a database table in a structured and reusable manner.
 
 ---
 
-## 🎯 Objectives  
+## 🛠️ Tools Used
 
-- To understand the concept of **database triggers**
-- To implement a **BEFORE INSERT trigger**
-- To automate calculation of salary
-- To enforce business rules using triggers
-- To handle exceptions in PL/SQL
+* Oracle SQL*Plus / SQL Developer
+* PL/SQL
 
 ---
 
-## 🧠 Theory  
+## 📚 Objectives
 
-A **trigger** is a database object that automatically executes when a specified event occurs (INSERT, UPDATE, DELETE).
-
-### 🔹 In this experiment:
-- Trigger Type → **BEFORE INSERT**
-- Purpose:
-  - Automatically calculate salary  
-  - Prevent invalid data entry  
-
-### 🔹 Formula Used:
-Total Payable Amount = Working Hours × Per Hour Salary
-
-### 🔹 Constraint:
-- If total amount > 25000 → ❌ Reject insertion
+* Understand PL/SQL package structure (Specification & Body)
+* Implement modular database logic
+* Perform CRUD operations using stored procedures
+* Use DBMS_OUTPUT for displaying results
+* Handle exceptions in PL/SQL
+* Improve performance and reusability
 
 ---
 
-## 🗄️ Table Structure  
+## 🧠 Theory
 
-| Column Name            | Data Type   |
-|------------------------|------------|
-| emp_id                | NUMBER (PK)|
-| emp_name              | VARCHAR2   |
-| working_hours         | NUMBER     |
-| perhour_salary        | NUMBER     |
-| total_payable_amount  | NUMBER     |
+A **PL/SQL package** is a collection of procedures, functions, variables, and cursors grouped together as a single unit.
 
----
+It consists of:
 
-## ⚙️ Implementation  
+* **Package Specification** → Declares procedures/functions
+* **Package Body** → Implements logic
 
-### 🔹 Trigger Logic
-- Calculates total salary
-- Validates condition
-- Raises error if violated
+### 🔹 Advantages
+
+* Improves performance (loaded once in memory)
+* Provides modularity
+* Enhances security
+* Promotes code reusability
 
 ---
 
-## 📸 Execution Screenshots  
+## ⚙️ Implementation Steps
 
-### 🟢 1. Table Creation  
-![Table Created](screenshots/1.png)
+### Step 1: Create Table
 
----
+* Created `employees` table with columns:
 
-### 🟢 2. Trigger Creation  
-![Trigger Created](screenshots/2.png)
+  * emp_id (Primary Key)
+  * emp_name
+  * salary
 
----
-
-### 🔴 3. Invalid Insert (Error Handling)  
-![Error Output](screenshots/3.png)
+📸 Screenshot:
+![Step 1](screenshots/1.png)
 
 ---
 
-### 🟢 4. Final Table Output  
-![Final Output](screenshots/4.png)
+### Step 2: Create Package Specification
+
+* Declared procedures:
+
+  * add_employee
+  * get_employee
+  * update_salary
+  * delete_employee
+
+📸 Screenshot:
+![Step 2](screenshots/2.png)
 
 ---
 
-## ⚠️ Exception Handling  
+### Step 3: Create Package Body
 
-- Used `RAISE_APPLICATION_ERROR`
-- Prevents invalid data insertion
-- Error captured using `WHEN OTHERS`
+* Implemented logic for all CRUD operations
+* Used SQL queries inside procedures
+* Added exception handling
 
----
-
-## 📊 Result  
-
-- Trigger successfully calculates salary ✔  
-- Prevents insertion when salary exceeds limit ✔  
-- Ensures data integrity ✔  
+📸 Screenshot:
+![Step 3](screenshots/3.png)
 
 ---
 
-## 🔍 Discussion  
+### Step 4: Insert Operation
 
-This experiment demonstrates:
-- Automation using triggers  
-- Enforcing business rules at database level  
-- Improving data consistency  
-- Reducing dependency on application logic  
+* Added employee record using package
 
----
-
-## 📌 Applications  
-
-- Payroll Systems  
-- HR Management Systems  
-- Financial Validation Systems  
+📸 Screenshot:
+![Step 4](screenshots/4.png)
 
 ---
 
-## 🏁 Conclusion  
+### Step 5: Read Operation
 
-The trigger was successfully implemented to automate salary calculation and enforce constraints. This ensures that only valid data is stored in the database, improving reliability and consistency.
+* Retrieved employee details
+
+📸 Screenshot:
+![Step 5](screenshots/5.png)
 
 ---
+
+### Step 6: Update Operation
+
+* Updated employee salary
+
+📸 Screenshot:
+![Step 6](screenshots/6.png)
+
+---
+
+### Step 7: Delete Operation
+
+* Deleted employee record
+
+📸 Screenshot:
+![Step 7](screenshots/7.png)
+
+---
+
+## 🔍 Detailed I/O Analysis
+
+### ✅ Input
+
+* SQL commands for table creation
+* Package specification & body
+* Procedure calls using anonymous PL/SQL blocks
+* Input values:
+
+  * emp_id
+  * emp_name
+  * salary
+
+---
+
+### ✅ Output
+
+* Employee Added successfully
+* Display of employee name and salary
+* Salary updated successfully
+* Updated values displayed
+* Employee deleted successfully
+* Proper execution messages from PL/SQL
+
+---
+
+## 📊 Result
+
+The PL/SQL package was successfully created and executed. All CRUD operations were performed correctly using modular procedures, demonstrating efficient database programming.
+
+---
+
+## 🎓 Learning Outcome
+
+* Learned structure of PL/SQL packages
+* Understood modular programming in databases
+* Gained hands-on experience with CRUD operations
+* Improved knowledge of exception handling
+* Learned real-world backend database logic
+
+---
+
+## 🚀 Conclusion
+
+This experiment demonstrates how PL/SQL packages improve database performance, maintainability, and reusability. Such implementations are widely used in enterprise-level applications.
+
+---
+
 
 ## 👨‍💻 Author  
 
