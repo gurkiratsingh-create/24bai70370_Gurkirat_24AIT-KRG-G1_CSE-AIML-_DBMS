@@ -55,7 +55,7 @@ This repository serves as a **comprehensive documentation** of DBMS practical ex
 | 7️⃣ | Design and Performance Analysis of Materialized Views | Simple Views, Complex Views, Materialized Views | [`exp-7/`](exp-7/) |
 | 8️⃣ | Stored Procedures in PL/SQL using IN, OUT, INOUT | Parameter Modes, Procedures, Exception Handling | [`exp-8/`](exp-8/) |
 | 9️⃣ | Packages in PL/SQL for CRUD Operations | Package Specification & Body, Procedures, Modular Programming, Exception Handling, DBMS_OUTPUT | [`exp-9/`](exp-9/) |
-
+| 🔟 | Database Trigger for Automatic Primary Key Functionality | Triggers, Sequences, BEFORE INSERT Logic, Automated Key Generation, Data Integrity | [`exp-10/`](exp-10/) |
 ---
 
 ## 📂 Repository Structure
@@ -109,6 +109,10 @@ DBMS-Lab-Experiments/
 │   ├── README.md
 │   ├── exp-9.sql
 │   └── screenshots/
+├── exp-10/
+    ├── README.md
+    ├── exp-10.sql
+    └── screenshots/
 ```
 
 ---
@@ -199,7 +203,7 @@ By completing these experiments, the following competencies are achieved:
 
 | Status | Count | Percentage |
 |--------|-------|------------|
-| ✅ Completed | 9 | 100% (of current syllabus) |
+| ✅ Completed | 10 | 100% (of current syllabus) |
 | 🔄 In Progress | 0 | - |
 | 📝 Planned | More to come | - |
 
@@ -210,7 +214,6 @@ By completing these experiments, the following competencies are achieved:
 ### Upcoming Experiments
 - 🔹 Advanced SQL Joins and Subqueries
 - 🔹 Stored Procedures and Functions
-- 🔹 Database Triggers
 - 🔹 Indexing and Query Optimization
 - 🔹 Transaction Management and Concurrency Control
 - 🔹 NoSQL Database Integration (MongoDB)
@@ -261,5 +264,5 @@ This project is created for **educational purposes** as part of the DBMS Lab cur
 
 ---
 
-**Last Updated:** April 2025  
+**Last Updated:** April 2026 
 **Status:** Active Development 🚀
